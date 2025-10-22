@@ -33,7 +33,8 @@ pipeline {
             steps {
                 echo 'Deploying container...'
                 bat 'docker rm -f %CONTAINER_NAME% || exit 0'
-                bat 'docker run -d --name %CONTAINER_NAME% -p %PORT%:%PORT% %IMAGE_NAME%:latest'
+                bat 'docker run -d --name %CONTAINER_NAME% -p %PORT%:3000 %IMAGE_NAME%:latest'
+                bat 'docker logs %CONTAINER_NAME%'
             }
         }
     }
@@ -41,6 +42,7 @@ pipeline {
     post {
         success {
             echo 'Build and Deployment Successful!'
+            echo "Access your app at http://localhost:%PORT%"
         }
         failure {
             echo 'Build Failed!'
