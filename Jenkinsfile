@@ -24,7 +24,7 @@ pipeline {
 
         stage('Test (Dummy)') {
             steps {
-                echo ' Running dummy test...'
+                echo 'Running dummy test...'
                 sh 'echo "All tests passed successfully!"'
             }
         }
