@@ -4,7 +4,7 @@ pipeline {
     environment {
         IMAGE_NAME = "task2-demo"
         CONTAINER_NAME = "task2-container"
-        PORT = "3000"
+        PORT = "3100"
     }
 
     stages {
