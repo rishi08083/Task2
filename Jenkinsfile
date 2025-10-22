@@ -18,22 +18,22 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker image...'
-                sh 'docker build -t ${IMAGE_NAME}:latest .'
+                bat 'docker build -t %IMAGE_NAME%:latest .'
             }
         }
 
         stage('Test (Dummy)') {
             steps {
                 echo 'Running dummy test...'
-                sh 'echo "All tests passed successfully!"'
+                bat 'echo All tests passed successfully!'
             }
         }
 
         stage('Deploy') {
             steps {
                 echo 'Deploying container...'
-                sh 'docker rm -f ${CONTAINER_NAME} || true'
-                sh 'docker run -d --name ${CONTAINER_NAME} -p ${PORT}:${PORT} ${IMAGE_NAME}:latest'
+                bat 'docker rm -f %CONTAINER_NAME% || exit 0'
+                bat 'docker run -d --name %CONTAINER_NAME% -p %PORT%:%PORT% %IMAGE_NAME%:latest'
             }
         }
     }
