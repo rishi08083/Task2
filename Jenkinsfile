@@ -11,7 +11,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Checking out source code...'
-                checkout scm
+                git branch: 'main', url: 'https://github.com/rishi08083/Task2.git'
             }
         }
 
